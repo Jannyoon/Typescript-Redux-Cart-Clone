@@ -7,7 +7,7 @@ interface ProductsListProps {
 
 
 const ProductsList : React.FC<ProductsListProps> = ({}) => {
-  const products = useSelector(getProductsSelector)
+  const products = useSelector(getProductsSelector);
   const handleAddProduct = ()=>{
     setProducts(prevProducts => [
       ...prevProducts, 
