@@ -33,7 +33,7 @@ const ProductForm : React.FC = () => {
         <input type="text" placeholder='Game title' name="title" value={title} onChange={handleChange}/>
         <input type="number" placeholder='Price' name="price" value={price} onChange={handleChange}/>
         <input type="text" placeholder='id' name="id" value={id} onChange={handleChange}/>
-        <button type="submit">Add price</button>
+        <button type="submit">Add product</button>
       </form>
     </>
   );

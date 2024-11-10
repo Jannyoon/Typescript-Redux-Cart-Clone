@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { removeProduct } from './Products.slice';
 import { getProductsSelector } from './Products.slice';
+import { useAppDispatch } from '../Store/store.hooks';
 
 interface ProductsListProps {
 }
 
 
-const ProductsList : React.FC<ProductsListProps> = ({}) => {
+const ProductsList : React.FC<ProductsListProps> = () => {
   const products = useSelector(getProductsSelector);
-  const handleAddProduct = ()=>{
-    setProducts(prevProducts => [
-      ...prevProducts, 
-      {
-        title : 'Half Life',
-        price : 100,
-        id : 'hl'
-      }
-    ])
+  const dispatch = useAppDispatch();
+
+  const removeFromStore = (id : string) => {
+    dispatch(removeProduct(id))
   }
+  /*
+    const handleAddProduct = ()=>{
+      setProducts(prevProducts => [
+        ...prevProducts, 
+        {
+          title : 'Half Life',
+          price : 100,
+          id : 'hl'
+        }
+      ])
+    }
+  */
 
   return (
     <div>
       <h2>Games List</h2>
       {products.map(product => <div key={product.id}>
         <span>{`${product.title} : ${product.price}`}</span>
+        <button onClick={()=>removeFromStore(product.id)}>Remove from the store</button>
       </div>)}
 
-      <button onClick={handleAddProduct}>Add Product</button>
+      <button>Add Product</button>
     </div>
   );
 }
